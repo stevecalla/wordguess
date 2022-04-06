@@ -1,0 +1,94 @@
+/* dark-theme.css */
+
+body {
+  color: #eee;
+  background: #121212;
+}
+
+body a {
+  color: #809fff;
+}
+
+p,
+.solution,
+/* .message, */
+.definition,
+.copy-notification {
+  color: black;
+  background-color: white;
+}
+
+.message,
+.definition,
+.copy-notification {
+  border: solid #121212;
+}
+
+.darkmode-toggle-button {
+  height: 27px;
+  width: 27px;
+  border: solid #121212;
+  border-radius: 50%;
+  border-radius: 50%;
+  border: solid;
+  border: solid white;
+  cursor: pointer;
+  background: linear-gradient( 90deg, white 50%, black 50% ); 
+}
+
+.darkmode-toggle--white {
+  background: #fff;
+}
+
+.darkmode-svg-toggle--white {
+  background: #121212;
+  fill: white;
+}
+
+th, td {
+  border: 1px solid white;
+}
+
+.history-header {
+  color: #BB86FD;
+}
+
+table, 
+.table-x-hide,
+.history-table,
+th {
+  background-color: #121212;
+}
+
+.table-header-row,
+.table-x-hide {
+  background-color: transparent;
+  color: whitesmoke
+}
+
+p.play-button,
+p.play-button-line {
+  color: white;
+  background-color: black;
+}
+
+.solution,
+.definition {
+  background-color: black;
+  color: white;
+}
+
+/* media-controller, */
+/* media-control-bar, */
+/* media-play-button,
+media-time-display,
+path.icon,
+svg + path.icon,
+::slotted(svg), ::slotted(img)
+{ */
+  /* border: 1px solid white; */
+  /* border-radius: 10px; */
+  /* background-color: white !important; */
+  /* fill: black !important;
+  color: black !important;
+} */

@@ -1,0 +1,31 @@
+/* light-theme.css */
+
+body {
+  color: #222;
+  background: #fff;
+}
+
+a {
+  color: #0033cc;
+}
+
+.solution,
+/* .message, */
+.definition,
+.copy-notification {
+  color: white;
+  background-color: black;
+  /* border-radius: solid black; */
+}
+
+.darkmode-toggle-button {
+  height: 27px;
+  width: 27px;
+  border: solid black;
+  border-radius: 50%;
+  border-radius: 50%;
+  border: none;
+  border: solid black;
+  cursor: pointer;
+  background: linear-gradient( 90deg, black 50%, white 50% ); 
+}

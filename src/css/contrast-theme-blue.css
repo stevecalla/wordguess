@@ -1,0 +1,31 @@
+.contrast-toggle--keySelected {
+  border-width: 5px;
+  border-style: double;
+  /* border-color: black; */
+}
+
+.contrast-toggle--noMatch {
+  background-color: #787C7E;
+  color: white;
+}
+
+.contrast-toggle--match {
+  background-color: #f5793a;
+  color: white;
+}
+
+.contrast-toggle--exactMatch {
+  background-color: #85c0f9;
+  color: white;
+}
+
+.contrast-toggle {
+  height: 27px;
+  width: 27px;
+  border: solid black;
+  border-radius: 50%;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient( 90deg, #6aaa64 50%, #c9b458 50% ); 
+}

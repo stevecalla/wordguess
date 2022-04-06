@@ -1,0 +1,874 @@
+/*------------MAIN PAGE LAYOUT---------------*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overscroll-behavior-y: hidden;
+  padding: env(safe-area-inset); /*this is the missing piece. Add it.*/
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-size: 16px;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 8vh;
+  width: 400px;
+  width: 425px;
+  margin-bottom: 20px;
+  border-bottom: solid;
+  border-color: grey;
+  justify-content: space-around;
+}
+
+.header-icon-svg {
+  height: 26px;
+  width: 26px;
+  background-color: none;
+}
+
+.spacer1,
+.spacer2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 85px;
+} 
+
+.solution, 
+.definition {
+  width: 100px;
+  text-align: center;
+  border: solid;
+  border-color: black;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 5;
+  animation: skew 3s infinite;
+  padding: 0.2rem;
+  margin-top: 35px;
+}
+
+p.play-button {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+
+
+.definition {
+  width: 250px;
+  padding: 0.5rem;
+  /* margin-top: 75px; */
+  margin-top: 100px;
+}
+
+audio {
+  width: 200px;
+  height: 35px;
+  margin: 10px;
+}
+
+/*--------- INSTRUCTION BOX -------------*/
+.main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 425px;
+  height: 375px;
+  position: relative;
+}
+
+.instruction-wrapper {
+  background-color: white;
+  height: 475px;
+  width: 375px;
+  border: solid;
+  border-color: whitesmoke;
+  border-radius: 5px;
+  z-index: 2;
+  position: absolute;
+}
+
+.confetti-lottiplayer-wrapper {
+  margin-top: 75px;
+  margin-top: 0rem;
+  position: absolute;
+  z-index: 3;
+}
+
+.instx-title {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 10px;
+  border-bottom: solid;
+  border-color: lightgrey;
+}
+
+.click-to-hide-x {
+  font-weight: lighter;
+}
+
+.click-to-hide-x:hover {
+  color: black;
+  font-size: 16px;
+}
+
+p {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+input[id^='tile'] {
+  height: 2rem;
+  width: 2rem;
+  text-align: center;
+  margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
+  border-color: light-grey;
+  opacity: 1;
+  filter: grayscale(0);
+  border: thin solid black;
+  border-radius: 0px;
+}
+
+input[id^='tile'][disabled] {
+  color: black;
+}
+
+.example-border {
+  margin: 10px;
+  padding: 0px;
+  border-top: solid;
+  border-bottom: solid;
+  border-color: lightgrey;
+}
+
+.copy-notification {
+  position: absolute;
+  z-index: 6;
+  border-radius: 5px;
+  width: 150px;
+  text-align: center;
+  position: relative;
+  height: 50px;
+  padding: 12px;
+  margin-top: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+/* ----------------------- */
+
+.input-wrapper,
+.history-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  width: 350px;
+  z-index: 1;
+  position: absolute;
+  height: 375px;
+  position: relative;
+}
+
+.instrx-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+input[id^='id'],
+input[id^='idh'] {
+  text-align: center;
+  margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
+  height: 56px;
+  width: 56px;
+  font-size: 3rem;
+  border: thin solid black;
+  border-radius: 0px;
+  z-index: 4;
+  /* color: black; */
+}
+
+input[data-status='noMatch'] {
+  /* color: white; */
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+input[data-status='match'] {
+  /* color: white; */
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+input[data-status='exactMatch'] {
+  /* color: white; */
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+input[type=text][disabled][data-status='gameOver'] {
+  opacity: 1;
+  filter: grayscale(0);
+  color: white;
+  background-color: white;
+  height: 3.5rem;
+  width: 3.5rem;
+  margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+input[type=text][data-status='start'] {
+  pointer-events: none;
+  cursor: not-allowed;
+  /* color: blue; */
+  /* color: red; */
+  /* color: green; */
+}
+
+/*------- KEYBOARD -----------*/
+.keyboard-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 400px;
+  margin-top: 30px;
+  margin-top: 20px;
+  width: 425px;
+}
+
+.keyboard-button {
+  height: 3.2rem;
+  width: 2rem;
+  margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  font-size: 16px;
+  width: 2.35rem;
+  /* border: unset; */
+  /* border: hidden;
+  border: transparent; */
+}
+
+.enter-button,
+.back-button {
+  width: 3.6rem;
+  background-color: #939598;
+}
+
+.backspace-svg-icon {
+  height: 25px;
+  width: 25px;
+  stroke: black;
+  stroke-width: 0.2;
+  stroke-width: 1.0;
+  margin-top: 0.3rem;
+}
+
+/*-------- HAMBURGER MENU ---------*/
+.hamburger-wrapper {
+  width: 260px;
+  border: thin solid;
+  border-radius: 4px;
+  background-color: white;
+  position: absolute;
+  z-index: 4;
+  transition: all 0.5s ease;
+  border: 3px solid;
+  border-color: whitesmoke;
+  border-radius: 5px;
+  left: 0;
+}
+
+.hamburger-menu {
+  display: flex;
+  padding: 5px;
+  margin: 0px 0px 10px 0;
+}
+
+.mode-description {
+  width: 175px;
+  margin-bottom: 0;
+}
+
+.hamburger-menu p {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.mode {
+  margin: 0.4rem;
+  font-size: 16px;
+}
+
+.toggle-detail {
+  margin-top: 0;
+  color: grey;
+  margin-left: 0.4rem;
+}
+
+.hamburger-toggle {
+  text-align: right;
+  width: 50px;
+  text-align: left;
+  text-align: center;
+}
+
+.toggleDefinition {
+  height: 32px;
+  width: 32px;
+}
+
+.click-to-hide {
+  text-align: right;
+  position: absolute;
+  font-size: 20px;
+  color: grey;
+  font-weight: lighter;
+  margin: 0;
+  margin-top: auto;
+  background: transparent;
+  position: absolute;
+  right: 8px;
+}
+
+.click-to-hide:hover {
+  color: black;
+  font-size: 24px;
+}
+
+/*-------- GAME STATS ---------*/
+.gameStats-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 260px;
+  background-color: white;
+  border: 3px solid;
+  border-color: whitesmoke;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 4;
+  transition: all 0.5s ease;
+  left: 0;
+  width: 260px;
+}
+
+.stat-description {
+  margin-bottom: 0;
+  /* width: 40px; */
+  margin-bottom: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.gameStats-menu {
+  display: flex;
+  flex-direction: row;
+  width: 225px;
+  margin: 0px;
+  margin-top: 15px;
+  border-bottom: solid;
+  border-color: lightgrey;
+  justify-content: space-between;
+  margin-top: 5px;
+  width: 240px;
+  justify-content: space-evenly;
+}
+
+.gameStats-menu p {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  text-align: left;
+  text-align: center;
+}
+
+.win-stats-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  align-items: center;
+}
+
+.win-description {
+  width: 225px;
+  margin: 15px 0px 0 0;
+  text-align: center;
+  border-bottom: solid lightgray;
+  width: 130px;
+}
+
+.bars-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 225px;
+  align-items: center;
+  border-bottom: solid;
+  border-color: lightgrey;
+  padding-bottom: 10px;
+  width: 240px;
+}
+
+.row-number {
+  width: 10px;
+  margin: 9px;
+}
+
+.current-stats {
+  display: flex;
+  width: 240px;
+  /* height: 125px; */
+}
+
+.streak-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: solid red; */
+  /* width: 140px; */
+  height: 125px;
+  /* width: 10px; */
+  width: 118px;
+}
+
+.description-container {
+  width: 125px;
+  height: 50px;
+  margin: 0px;
+  height: 45px;
+}
+
+.description {
+  width: 125px;
+  margin: 0px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.gameBoard-wrapper {
+  width: 225px;
+  padding: 5px;
+  justify-content: left;
+  width: 240px;
+
+  width: 225px;
+  padding: 5px;
+  justify-content: left;
+  width: 240px;
+  /* text-align: center; */
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: row;
+  flex-direction: column;
+}
+
+.bar-wrapper {
+  color: white;
+  background: white;
+  border: solid black;
+  border-radius: 15px;
+  font-size: 12px;
+  height: 14px;
+  padding-right: 10px;
+  width: 135px;
+  width: 145px;
+}
+
+.progress-bar2 {
+  color: white;
+  background: black;
+  border-radius: 15px;
+  font-size: 12px;
+  height: 14px;
+  padding-right: 10px;
+  position: absolute;
+  z-index: 2;
+  position: relative;
+  min-width: 15px;
+  /* display: flex;
+  align-items: center;
+  justify-content: right; */
+  text-align: right;
+}
+
+.win-percent {
+  width: 35px;
+  text-align: right;
+  margin: 0;
+}
+
+.game-board {
+  margin: auto;
+  flex-direction: row;
+  letter-spacing: 1px;
+  display: flex;
+  height: 13px;
+  margin: 1.5px;
+}
+
+.spacer {
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-left: 5px;
+  border: 1px solid lightgrey;
+  margin-top: 25px;
+  height: 80px;
+}
+
+.stats-buttons {
+  width: 195px;
+  border-top: solid;
+  border-color: lightgrey;
+  padding: 15px 0 15px 0;
+  display: flex;
+  align-items: center;
+  width: 215px;
+  width: 225px;
+  width: 240px;
+}
+
+.current-game-text {
+  margin: 0 0 0px 0;
+  text-align: left;
+  margin-left: 0px;
+  height: 20px;
+  text-align: center;
+}
+
+.play-again-button {
+  height: 50px;
+  width: 250px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 2.5px;
+  color: black;
+  border-color: lightgray;
+  width: 200px;
+}
+
+.stats-button-spacer {
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-left: 5px;
+  border: 1px solid lightgrey;
+}
+
+.copy-buttons {
+  width: 95px;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 3.5px;
+  margin-left: 7px;
+  border-color: lightgray;
+}
+
+.contrast-toggle--keySelected {
+  border-width: 5px;
+  border-style: double;
+  border-color: black;
+}
+
+/*-------- HISTORY TABLE ---------------*/
+.history-table {
+  display: flex;
+  /* display: block; */
+  /* justify-content: center; */
+  /* height: 375px; */
+  /* overflow: auto; */
+  width: 425px;
+  position: absolute;
+  z-index: 3;
+  background: white;
+  /* padding: 20px; */
+  max-height: 375px;
+  align-items: center;
+  flex-direction: column;
+  table-layout: fixed;
+  align-items: baseline;
+}
+
+.table-header-row {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  /* height: 20px; */
+  margin: 0px;
+  position: absolute;
+  /* z-index: 1; */
+  width: 101%;
+}
+
+.table-spacer {
+  width: 95%;
+}
+
+.table-x-hide {
+  width: 7%;
+  margin: 0px;
+  font-size: 20px;
+  font-weight: lighter;
+  text-align: left;
+
+  background: lightgray;
+  width: 25px;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  z-index: 6;
+}
+
+table {
+  border: 1px solid black;
+  font: 16px "Open Sans", Helvetica, Arial, sans-serif;
+  width: 360px;
+  /* max-height: 300px; */
+  display: block;
+  overflow-x: auto;
+  border-spacing: 0;
+  border: none;
+  width: 375px;
+  
+}
+
+table thead,
+table tfoot {
+  position: sticky;
+  /* white-space: nowrap; */
+}
+
+table thead {
+  inset-block-start: 0; /* "top" */
+  /* color: blue;
+  text-decoration: underline; */
+}
+
+tbody {
+  white-space: nowrap;
+}
+
+table tfoot {
+  inset-block-end: 0; /* "bottom" */
+}
+
+thead > tr,
+tfoot > tr {
+  background-color: rgb(228, 240, 245);
+  background-color: white;
+}
+
+th, td {
+  border: 1px solid black;
+  padding:4px 6px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.history-board-wrapper {
+  z-index: 6;
+  position: absolute;
+  /* margin-left: 38px; */
+}
+
+input[id^='idh'] {
+  /* margin-right: 0.0rem; */
+  /* color: white; */
+}
+
+/* .history-board-link {
+  color: black;
+  text-decoration: underline;
+} */
+
+.history-board-link:hover {
+  transform: scale(1.05);
+  color: blue;
+}
+
+/*-------- DARK MODE & CONTRAST -------*/
+/* see light-theme.css and dark-theme.css */
+
+/*----------- CLOAK / HIDE / SHOW -----*/
+.cloak {
+  visibility: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
+/*------- MEDIA QUERIES -----------------*/
+@media screen and (max-width: 600px) {
+  .header {
+    margin-bottom: 10px;
+    width: 350px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  progress {
+    width: 150px;
+  }
+
+  .main-content {
+    width: 350px;
+    height: 280px;
+    height: 300px;
+  }
+
+  .input-wrapper,
+  .history-board {
+    width: 275px;
+    display: flex;
+    width: 250px;
+    flex-wrap: wrap;
+    height: 300px;
+  }
+
+  input[id^='id'],
+  input[id^='idh'] {
+    height: 3rem;
+    width: 3rem;
+    font-size: 2rem;
+    margin-right: 0.1rem;
+    margin-bottom: 0.1rem;
+    height: 2.7rem;
+    width: 2.7rem;
+  } 
+
+  input[type=text][disabled][data-status='gameOver'] {
+    opacity: 1;
+    filter: grayscale(0);
+    color: white;
+    background-color: white;
+    height: 3rem;
+    width: 3rem;
+    font-size: 2rem;
+    margin-right: 0.1rem;
+    margin-bottom: 0.1rem;
+    height: 2.7rem;
+    width: 2.7rem;
+  }
+
+  .keyboard-wrapper {
+    margin-top: 10px;
+    width: 350px;
+  }
+
+  .keyboard-button {
+    width: 1.7rem;
+  }
+
+  .enter-button,
+  .back-button {
+    width: 3.1rem;
+    font-size: 14px;
+    font-weight: 450;
+  }
+
+/*--------- INSTRUCTION BOX -------------*/
+  .instruction-wrapper {
+    background-color: white;
+    height: 410px;
+    width: 275px;
+  }
+
+  p {
+    margin: 0.4rem;
+  }
+
+  input[id^='tile'] {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+/*----------- HISTORY TABLE ---------*/
+  .history-table {
+    /* height: 300px; */
+    width: 350px;
+    max-height: 300px;
+  }
+
+  table {
+    /* width: 265px;
+    width: 280px; */
+    width: 319px;
+  }
+
+  .table-header-row {
+    /* width: 350px; */
+    width: 101%;
+  }
+
+  .table-x-hide {
+    /* width: 340px; */
+    width: 12%;
+
+    background: lightgray;
+    width: 25px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+  }
+
+  th, td {
+    font-size: 10px;
+  }
+
+/*----------- DARK MODE TOGGLE ------------*/
+  .darkmode-toggle {
+    right: 30px;
+    bottom: 10px;
+  }
+
+  .contrast-toggle {
+    left: 30px;
+    bottom: 10px;
+  }    
+}

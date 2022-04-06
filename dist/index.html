@@ -1,16 +1,188 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en"> -->
+<!-- <head> -->
+  <!-- <meta charset="UTF-8"> -->
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <!-- <title>Webpack Starter Kit</title> -->
+<!-- </head> -->
+<!-- <body> -->
+  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
   
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+  <!-- <script src="bundle.js"></script> -->
 
-</body>
+<!-- </body> -->
+<!-- </html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>✨ WORDGUESS ✨</title>
+    <!-- <link rel="stylesheet" id="confetti-link" href="../src/css/confetti.css" > -->
+    <!-- <link rel="stylesheet" href="../src/css/normalize.css" media="all"> -->
+    <!-- <link rel="stylesheet" href="../src/css/styles.css" media="all"> -->
+    <!-- <link rel="stylesheet" id="darkMode-link" href="../src/css/light-theme.css" > -->
+    <!-- <link rel="stylesheet" id="contrastMode-link" href="../src/css/contrast-theme-green.css" > -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"> -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"> -->
+  </head>
+  <body id='body'>
+    <div id='confetti'></div>
+    <div class='header' id='header'>
+      <div class='spacer1'>
+        <svg class='header-icon-svg' id='headerIconSVG' onclick='hamburgerMenuShowHide()' fill="#000000" width="50px" height="50px" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"/></svg>
+        <svg class='header-icon-svg' id='headerIconSVG' onclick='refreshButton()' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 16c1.671 0 3-1.331 3-3s-1.329-3-3-3-3 1.331-3 3 1.329 3 3 3z"/><path d="M20.817 11.186a8.94 8.94 0 0 0-1.355-3.219 9.053 9.053 0 0 0-2.43-2.43 8.95 8.95 0 0 0-3.219-1.355 9.028 9.028 0 0 0-1.838-.18V2L8 5l3.975 3V6.002c.484-.002.968.044 1.435.14a6.961 6.961 0 0 1 2.502 1.053 7.005 7.005 0 0 1 1.892 1.892A6.967 6.967 0 0 1 19 13a7.032 7.032 0 0 1-.55 2.725 7.11 7.11 0 0 1-.644 1.188 7.2 7.2 0 0 1-.858 1.039 7.028 7.028 0 0 1-3.536 1.907 7.13 7.13 0 0 1-2.822 0 6.961 6.961 0 0 1-2.503-1.054 7.002 7.002 0 0 1-1.89-1.89A6.996 6.996 0 0 1 5 13H3a9.02 9.02 0 0 0 1.539 5.034 9.096 9.096 0 0 0 2.428 2.428A8.95 8.95 0 0 0 12 22a9.09 9.09 0 0 0 1.814-.183 9.014 9.014 0 0 0 3.218-1.355 8.886 8.886 0 0 0 1.331-1.099 9.228 9.228 0 0 0 1.1-1.332A8.952 8.952 0 0 0 21 13a9.09 9.09 0 0 0-.183-1.814z"/></svg>
+        <!-- <p class='cloak'>XX</p> -->
+        <!-- <img class='header-icon-svg' src='./assets/color_vision_icon.png' alt="Contrast Mode" onclick='toggleContrastModeButton()'> -->
+        <button class="contrast-toggle" onclick='toggleContrastModeButton()' aria-label="Activate color blind mode" aria-checked="false" role="checkbox"></button>
+        <!-- <svg  class='header-icon-svg' onclick='getKeyboardButton()' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 433.632 433.632" style="enable-background:new 0 0 433.632 433.632;" xml:space="preserve"><g><path d="M411.999,130.626H73.567v-5.002c0-5.375,4.373-9.749,9.749-9.749h282.935c13.646,0,24.749-11.103,24.749-24.749 c0-13.647-11.103-24.75-24.749-24.75h-68.445c-4.143,0-7.5,3.358-7.5,7.5s3.357,7.5,7.5,7.5h68.445c5.376,0,9.749,4.374,9.749,9.75 c0,5.375-4.373,9.749-9.749,9.749H83.316c-13.646,0-24.749,11.103-24.749,24.749v5.002H21.634C9.705,130.626,0,140.332,0,152.26 v193.362c0,11.929,9.705,21.633,21.634,21.633h390.365c11.929,0,21.633-9.705,21.633-21.633V152.26 C433.632,140.332,423.928,130.626,411.999,130.626z M418.632,345.622c0,3.658-2.976,6.633-6.633,6.633H21.634 c-3.658,0-6.634-2.976-6.634-6.633V152.26c0-3.658,2.976-6.634,6.634-6.634h390.365c3.657,0,6.633,2.976,6.633,6.634V345.622z"/><path d="M401.132,155.627H32.5c-4.143,0-7.5,3.358-7.5,7.5v171.628c0,4.142,3.357,7.5,7.5,7.5h368.632c4.143,0,7.5-3.358,7.5-7.5 V163.127C408.632,158.985,405.274,155.627,401.132,155.627z M285.755,170.627h46.438v27.875h-46.438V170.627z M101.438,256.443 h46.438v27.937h-46.438V256.443z M70.72,241.443v-27.941h46.438v27.941H70.72z M132.158,241.443v-27.941h46.438v27.941H132.158z  M162.877,256.443h46.439v27.937h-46.439V256.443z M193.597,241.443v-27.941h46.438v27.941H193.597z M224.316,256.443h46.438 v27.937h-46.438V256.443z M255.035,241.443v-27.941h46.438v27.941H255.035z M285.755,256.443h46.438v27.937h-46.438V256.443z  M316.474,241.443v-27.941h32.605v27.941H316.474z M224.316,170.627h46.438v27.875h-46.438V170.627z M162.877,170.627h46.439 v27.875h-46.439V170.627z M101.438,170.627h46.438v27.875h-46.438V170.627z M40,170.627h46.438v27.875H40V170.627z M40,213.502 h15.72v27.941H40V213.502z M40,256.443h46.438v27.937H40V256.443z M55.72,327.255H40V299.38h15.72V327.255z M117.158,327.255H70.72 V299.38h46.438V327.255z M178.597,327.255h-46.438V299.38h46.438V327.255z M240.035,327.255h-46.438V299.38h46.438V327.255z  M301.474,327.255h-46.438V299.38h46.438V327.255z M362.912,327.255h-46.438V299.38h46.438V327.255z M393.632,327.255h-15.72 V299.38h15.72V327.255z M393.632,284.38h-46.438v-27.937h9.386c4.143,0,7.5-3.358,7.5-7.5v-35.441h29.553V284.38z M393.632,198.502 h-46.438v-27.875h46.438V198.502z"/><path d="M270.119,76.745c-0.022-0.052-0.035-0.082-0.043-0.102C270.114,76.733,270.25,77.053,270.119,76.745z"/><path d="M282.35,79.185c4.21-4.337,1.792-11.93-4.298-12.735c-5.578-0.738-10.16,5.034-7.932,10.295 C272.181,81.619,278.56,82.859,282.35,79.185z"/><path d="M270.076,76.643C270.065,76.616,270.061,76.608,270.076,76.643L270.076,76.643z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> -->
+      </div>
+      <h1 onclick=createConfetti()>WORDGUESS</h1>
+      <div class='spacer2'>
+        <button class="darkmode-toggle-button" onclick='toggleDarkModeButton()' aria-label="Activate dark mode" aria-checked="false" role="checkbox" ></button>       
+         <!-- <svg class='header-icon-svg' id='headerIconSVG' onclick='definitionButton()' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 459.319 459.319" style="enable-background:new 0 0 459.319 459.319;" xml:space="preserve"><g><path d="M141.288,189.821h-23.685V145.28h23.528v-23.69h21.016v23.374h23.681v44.707h-23.681v0.151H141.288z M60.801,398.87 c0.012,1.1,0.03,1.921,0.042,2.459c0.006,0.331-0.053,0.638-0.071,0.963c0.739,18.224,15.755,32.817,34.146,32.817h303.76v-33.461 c0-6.68,5.421-12.105,12.105-12.105c6.679,0,12.105,5.426,12.105,12.105v45.565c0,6.686-5.427,12.105-12.105,12.105H93.091 c-0.629,0-1.235-0.089-1.847-0.183c-30.505-1.91-54.757-27.261-54.757-58.245c0-0.71,0.085-1.396,0.109-2.099 c-0.375-35.943,0-309.36,0.042-339.109c-0.047-0.423-0.127-0.827-0.127-1.259C36.511,26.205,62.719,0,94.938,0h19.343h293.535 h2.955c6.685,0,12.105,5.423,12.105,12.105v342.139c0,6.679-5.421,12.104-12.105,12.104c-0.071,0-0.13-0.023-0.201-0.023 c-0.887,0.213-1.82,0.354-2.772,0.354H94.918C76.736,366.674,61.859,380.948,60.801,398.87z M278.347,121.59h94.425v20.862h-23.685 v23.69h-23.525v23.685h-23.69v23.533h-23.536v49.882h120.792v-26.209h-94.584v-20.859h23.69V192.49h23.525v-23.69h23.689V145.28 h23.679V95.237h-120.78V121.59z M224.949,192.49h56.265v-26.353h-56.265V192.49z M91.41,263.229h26.2v-47.056h23.679v-0.15h44.54 v47.219h26.354v-120.79h-23.688v-23.841H164.81V95.237h-26.202v23.684h-23.685v23.69H91.389v120.618H91.41z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> -->
+        <svg  class='header-icon-svg' id='headerIconSVG' onclick='copyGameBoardButton()' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 210.107 210.107" style="enable-background:new 0 0 210.107 210.107;" xml:space="preserve"><g><path d="M168.506,0H80.235C67.413,0,56.981,10.432,56.981,23.254v2.854h-15.38 c-12.822,0-23.254,10.432-23.254,23.254v137.492c0,12.822,10.432,23.254,23.254,23.254h88.271 c12.822,0,23.253-10.432,23.253-23.254V184h15.38c12.822,0,23.254-10.432,23.254-23.254V23.254C191.76,10.432,181.328,0,168.506,0z M138.126,186.854c0,4.551-3.703,8.254-8.253,8.254H41.601c-4.551,0-8.254-3.703-8.254-8.254V49.361 c0-4.551,3.703-8.254,8.254-8.254h88.271c4.551,0,8.253,3.703,8.253,8.254V186.854z M176.76,160.746 c0,4.551-3.703,8.254-8.254,8.254h-15.38V49.361c0-12.822-10.432-23.254-23.253-23.254H71.981v-2.854c0-4.551,3.703-8.254,8.254-8.254h88.271c4.551,0,8.254,3.703,8.254,8.254V160.746z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>     
+        <svg class='header-icon-svg' id='headerIconSVG' onclick='statsMenuShowHide()' version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve"><g id="Black_22_"><path d="M444.138,259.21c-25.343,0-45.878,20.535-45.878,45.878c0,5.865,1.21,11.439,3.216,16.599l-62.615,54.652 c-6.661-3.767-14.256-6.095-22.449-6.095c-10.934,0-20.826,3.981-28.712,10.352l-104.266-65.601 c0.704-3.185,1.133-6.477,1.133-9.892c0-25.343-20.535-45.878-45.878-45.878c-25.343,0-45.878,20.535-45.878,45.878 c0,8.713,2.573,16.783,6.784,23.72l-37.287,44.576c-5.115-1.975-10.612-3.154-16.431-3.154C20.535,370.229,0,390.764,0,416.107 c0,25.343,20.535,45.878,45.878,45.878c25.343,0,45.878-20.535,45.878-45.878c0-8.315-2.389-16.002-6.248-22.725l37.854-45.234 c4.824,1.715,9.923,2.817,15.328,2.817c10.78,0,20.565-3.874,28.39-10.107l104.45,65.723c-0.643,3.078-1.011,6.248-1.011,9.509 c0,25.343,20.535,45.878,45.878,45.878c25.343,0,45.878-20.535,45.878-45.878c0-5.926-1.21-11.546-3.262-16.752l62.523-54.56 c6.692,3.813,14.333,6.171,22.587,6.171c25.343,0,45.878-20.535,45.878-45.878C490.015,279.745,469.48,259.21,444.138,259.21z"/><polygon points="186.604,235.644 214.52,235.644 318.525,28.015 291.421,28.015 	"/><path d="M185.792,28.015c-13.23,0-23.735,4.257-31.468,12.756c-7.733,8.499-11.592,21.561-11.592,39.186 c0,17.717,3.859,30.81,11.607,39.247c7.733,8.468,18.452,12.679,32.142,12.679c13.246,0,23.735-4.242,31.484-12.74 c7.733-8.499,11.607-21.561,11.607-39.201c0-17.702-3.874-30.794-11.607-39.232C210.201,32.242,199.497,28.015,185.792,28.015z M195.21,105.468c-2.236,3.216-5.375,4.824-9.402,4.824c-3.936,0-7.013-1.608-9.249-4.824c-2.955-4.38-4.441-12.985-4.441-25.772 c0-12.802,1.485-21.377,4.425-25.787c2.236-3.216,5.329-4.824,9.249-4.824c4.043,0,7.166,1.654,9.402,4.961 c2.864,4.303,4.288,12.848,4.288,25.649C199.497,92.483,198.058,101.089,195.21,105.468z"/><path d="M287.057,223.286c7.748,8.499,18.452,12.741,32.157,12.741c13.23,0,23.735-4.242,31.468-12.741 c7.748-8.499,11.622-21.606,11.622-39.324c0-17.61-3.874-30.687-11.622-39.186c-7.733-8.499-18.36-12.756-31.866-12.756 c-13.429,0-23.995,4.257-31.744,12.756c-7.733,8.499-11.607,21.561-11.607,39.186C275.45,201.68,279.324,214.788,287.057,223.286z M309.276,158.053c2.144-3.216,5.237-4.824,9.249-4.824c4.012,0,7.151,1.608,9.387,4.824c2.879,4.395,4.288,12.985,4.288,25.787 c0,12.786-1.47,21.377-4.426,25.772c-2.144,3.216-5.237,4.824-9.249,4.824c-3.935,0-7.029-1.654-9.249-4.961 c-2.955-4.303-4.426-12.848-4.426-25.634C304.851,171.038,306.321,162.448,309.276,158.053z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+        <!-- <svg class='header-icon-svg' id='headerIconSVG' onclick='definitionButton()' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 459.319 459.319" style="enable-background:new 0 0 459.319 459.319;" xml:space="preserve"><g><path d="M141.288,189.821h-23.685V145.28h23.528v-23.69h21.016v23.374h23.681v44.707h-23.681v0.151H141.288z M60.801,398.87 c0.012,1.1,0.03,1.921,0.042,2.459c0.006,0.331-0.053,0.638-0.071,0.963c0.739,18.224,15.755,32.817,34.146,32.817h303.76v-33.461 c0-6.68,5.421-12.105,12.105-12.105c6.679,0,12.105,5.426,12.105,12.105v45.565c0,6.686-5.427,12.105-12.105,12.105H93.091 c-0.629,0-1.235-0.089-1.847-0.183c-30.505-1.91-54.757-27.261-54.757-58.245c0-0.71,0.085-1.396,0.109-2.099 c-0.375-35.943,0-309.36,0.042-339.109c-0.047-0.423-0.127-0.827-0.127-1.259C36.511,26.205,62.719,0,94.938,0h19.343h293.535 h2.955c6.685,0,12.105,5.423,12.105,12.105v342.139c0,6.679-5.421,12.104-12.105,12.104c-0.071,0-0.13-0.023-0.201-0.023 c-0.887,0.213-1.82,0.354-2.772,0.354H94.918C76.736,366.674,61.859,380.948,60.801,398.87z M278.347,121.59h94.425v20.862h-23.685 v23.69h-23.525v23.685h-23.69v23.533h-23.536v49.882h120.792v-26.209h-94.584v-20.859h23.69V192.49h23.525v-23.69h23.689V145.28 h23.679V95.237h-120.78V121.59z M224.949,192.49h56.265v-26.353h-56.265V192.49z M91.41,263.229h26.2v-47.056h23.679v-0.15h44.54 v47.219h26.354v-120.79h-23.688v-23.841H164.81V95.237h-26.202v23.684h-23.685v23.69H91.389v120.618H91.41z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> -->
+        <!-- <svg  class='header-icon-svg' id='headerIconSVG' onclick='copyGameBoardButton()' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 210.107 210.107" style="enable-background:new 0 0 210.107 210.107;" xml:space="preserve"><g><path d="M168.506,0H80.235C67.413,0,56.981,10.432,56.981,23.254v2.854h-15.38 c-12.822,0-23.254,10.432-23.254,23.254v137.492c0,12.822,10.432,23.254,23.254,23.254h88.271 c12.822,0,23.253-10.432,23.253-23.254V184h15.38c12.822,0,23.254-10.432,23.254-23.254V23.254C191.76,10.432,181.328,0,168.506,0z M138.126,186.854c0,4.551-3.703,8.254-8.253,8.254H41.601c-4.551,0-8.254-3.703-8.254-8.254V49.361 c0-4.551,3.703-8.254,8.254-8.254h88.271c4.551,0,8.253,3.703,8.253,8.254V186.854z M176.76,160.746 c0,4.551-3.703,8.254-8.254,8.254h-15.38V49.361c0-12.822-10.432-23.254-23.253-23.254H71.981v-2.854c0-4.551,3.703-8.254,8.254-8.254h88.271c4.551,0,8.254,3.703,8.254,8.254V160.746z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> -->
+      </div>
+    </div>
+    <!-- KEYBOARD -->
+    <!-- <div class='input-wrapper hidden' id='inputTilesRow1' onclick=focusCurrentTile()> -->
+    <div class='main-content' id='mainContent'>
+      <div class='table-header-row hidden' id='tableHeaderRow'>
+        <p class='table-spacer'></p>
+        <p class='table-x-hide' id='tableXHide' onclick='hideHistoryBoard()'>x</p>
+      </div>
+      <div class='hamburger-wrapper hidden' id='hamburgerPopupMenu'></div>
+      <div class='copy-notification hidden' id='copyNotification'></div>
+      <div class='input-wrapper' id='inputTilesRow1'></div>
+      <div class='instruction-wrapper' id='instructionWrapper' onClick='hideInstructions()'></div>
+      <div class='confetti-lottiplayer-wrapper' id='confettiWrapper'></div>
+      <div class='message hidden' id='message'></div>
+      <div class='solution hidden' id='solution'>
+        <!-- Solution -->
+
+        <!-- <media-controller audio> -->
+          <!-- <audio -->
+            <!-- slot="media" -->
+            <!-- src='./assets/pronunce_not_available.mp3' -->
+          <!-- ></audio> -->
+          <!-- <media-control-bar> -->
+            <!-- <media-play-button></media-play-button> -->
+            <!-- <p class='play-button'>Play</p> -->
+            <!-- <p class='play-button-line'>|</p> -->
+            <!-- <media-time-display show-duration></media-time-display> -->
+            <!-- <media-duration-display></media-duration-display> -->
+            <!-- <media-time-range></media-time-range> -->
+            <!-- <media-playback-rate-button></media-playback-rate-button> -->
+            <!-- <media-mute-button></media-mute-button> -->
+            <!-- <media-volume-range></media-volume-range> -->
+          <!-- </media-control-bar> -->
+        <!-- </media-controller> -->
+
+        <!-- src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/858/outfoxing.mp3" -->
+        <!-- <audio controls="" autoplay="" name="media" type="audio/mpeg"></audio> -->
+      </div>
+
+      <div class='definition hidden' id='definition'></div>
+      <div class='gameStats-wrapper hidden' id='createGameStatsMenu'></div>
+      <div class='history-table' id='historyTable'></div>
+      <div class='history-board-wrapper hidden' id='historyBoardWrapper'>
+        <div class='history-board' id='historyBoard'></div>
+      </div>
+    </div>
+    <div class='keyboard-wrapper' id='keyboardWrapper'>
+      <!-- <button class='keyboard-button' id='keyboard' type='button' value='A' onClick=inputText(this)>A</button> -->
+    </div>
+
+    <!-- <audio controls="" autoplay="" name="media" type="audio/mpeg"></audio> -->
+    <!-- <audio controls="" autoplay="" name="media"><src="" type="audio/mpeg"></audio> -->
+    <!-- <audio controls="" autoplay="" name="media"><source src="https://audio.wordnik.com/10989.mp3?Expires=1648692105&Key-Pair-Id=APKAIHXX6B6C37D2VKVA&Signature=LVv8gcLj3hw7kXGPPacNS7vNM-OyBUNO-HywJ1uNY2nksLAPBjSgWqtZO~V6OsnV59XD8wswl9m3VVBlZYqjFcD6z6Ntji4d5HLG4RC8bDWNV6YbtT9CnfbICeW4g-RaYFVWuyPauXsdnmV1ZIkxJZxCUw4qX0mdBWqgpiKbpNDVJz91xrxIXE75JwdjBGuOOddnYLZVbPwnHeIdHaJWJR0-4K5XhG-in51ZUjeR419l0aArr3ep8Xd2d0Y7NSG0nbc0wO8F-KEeny5XqbYO3MHEqEQT~VgAMDXXaRkpXU04EAT624BTITekv6J1bZ9lgrD0wZaiad8b6VNhwRPtqQ__" type="audio/mpeg"></audio> -->
+
+    <script type="module" src="https://unpkg.com/media-chrome@0.5"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <!-- <script type="text/javascript" src="../src/confetti.js"></script>
+    <script type="text/javascript" src="../src/data.js"></script>
+    <script type="text/javascript" src="../src/main.js"></script> -->
+
+    <!-- <script type="module" src="./node_modules/randomcolor/randomColor.js"></script>  -->
+<!-- /Users/stevecalla/not-wordle/wordle_v1/node_modules/randomcolor/randomColor.js -->
+
+  
+    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+    <script src="bundle.js"></script>
+    
+  </body>
 </html>
+
+<!-- --green: #6aaa64;
+--darkendGreen: #538d4e;
+--yellow: #c9b458;
+--darkendYellow: #b59f3b;
+--lightGray: #d8d8d8;
+--gray: #86888a;
+--darkGray: #939598;
+--white: #fff;
+--black: #212121;
+/* Colorblind colors */
+--orange: #f5793a;
+--blue: #85c0f9;
+font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+font-size: 16px;
+--header-height: 50px;
+--keyboard-height: 200px;
+--game-max-width: 500px; -->
+
+<!-- src='/Users/stevecalla/not-wordle/wordle_v1/wordle_how_to_play_v2.png' -->
+<!-- <div class='solution' id='solution' onclick=resetGame()></div> -->
+
+<!-- <audio controls autoplay> -->
+  <!-- <source src="https://media.merriam-webster.com/audio/prons/en/us/mp3/number/3d000001.mp3" type="audio/mpeg"> -->
+  <!-- <source src="https://media.merriam-webster.com/audio/prons/en/us/mp3/p/pajama02.mp3"type='audio/mpeg'> -->
+<!-- </audio> -->
+<!-- <audio id='audio' controls autoplay> -->
+  <!-- <source src="https://media.merriam-webster.com/audio/prons/en/us/mp3/s/brace001.mp3?key=d6ad76fd-5324-4925-834b-17a06efafce6" type="audio/mpeg"> -->
+  <!-- <source src="https://media.merriam-webster.com/audio/prons/en/us/mp3/p/pajama02.mp3" type='audio/mpeg'> -->
+<!-- </audio> -->
+
+<!-- <button id='copy' onclick="handleCopyTextFromArea()">Copy</button> -->
+<!-- <button id='copy'>Copy</button> -->
+<!-- <div id='clipboard-area'>Test Clipboard Copy Function</div> -->
+<!-- <input type="text" id="mytext" placeholder='placeholder' value='copy value'> -->
+<!-- <button onclick="handleClick()">Copy</button> -->
+<!-- <h3 class="reset-message hidden">""</h3> -->
+
+
+<!-- <a class="play-pron hw-play-pron hoverable converted" data-lang="en_us" data-file="shift001" data-dir="s" href="https://www.merriam-webster.com/dictionary/shift?pronunciation&amp;lang=en_us&amp;dir=s&amp;file=shift001" data-url="https://www.merriam-webster.com/dictionary/shift?pronunciation&amp;lang=en_us&amp;dir=s&amp;file=shift001" title="How to pronounce shift (audio)">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px" viewBox="0 0 26 26" version="1.1" data-inject-url="https://www.merriam-webster.com/images/svg/audio.svg" class="svg replaced-svg"><title>How to pronounce shift (audio)</title>
+<defs>
+<linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" style="stop-color:rgb(38,86,103);stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:rgb(15,56,80);stop-opacity:1"></stop>
+</linearGradient>
+<linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" style="stop-color:rgb(231,240,244);stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:rgb(203,225,234);stop-opacity:1"></stop>
+</linearGradient>
+</defs>
+<g class="Audio" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+  <g class="Icon/AudioPron">
+      <g class="Audio">
+          <circle class="outline Oval" fill="url(#grad3) #265667" cx="13" cy="13" r="13"></circle>
+          <polygon class="logo Path-2" stroke="#FFFFFF" fill="#FFFFFF" points="6 10.5031797 6 15.4563465 9.37102011 15.4563465 13 18 13 8.02789307 9.5 10.5031797"></polygon>
+          <path class="logo2 Path-3" d="M16,8.5 C17.4887382,10.0718463 18.2331073,11.569707 18.2331073,12.993582 C18.2331073,15.1293945 17.1165537,16.4498291 16,17.5894775" stroke="#FFFFFF"></path>
+          <path class="logo2 Path-4" d="M18.0189209,6.5 C20.0989176,8.3652264 21.138916,10.5318931 21.138916,13 C21.138916,15.4681069 20.0723674,17.6756672 17.93927,19.6226807" stroke="#FFFFFF"></path>
+      </g>
+  </g>
+</g>
+</svg>
+</a> -->
